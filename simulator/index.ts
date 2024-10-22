@@ -44,10 +44,9 @@ const sendRequest = (nrRequest: number) => {
   for (let i = 0; i < nrRequest; i++) {
     console.log(`Sending request: ${i + 1}`);
 
-    const req = request({ ...urlToHttpOptions(lbUrl), method: 'GET' }, (res) => {
+    const req = request({ ...urlToHttpOptions(lbUrl), method: 'POST' }, (res) => {
       const data: Uint8Array[] = [];
       res.on('data', (d) => data.push(d));
-      res.on('error', () => console.log('ERR'))
       res.on('end', () => console.log(Buffer.concat(data).toString()))
     });
 
@@ -62,7 +61,7 @@ const main = async () => {
 
   await spinNodes(ports);
   await spinLb(serverUrls);
-  sendRequest(ports.length * 2);
+  sendRequest(ports.length * 3);
 }
 
 main();

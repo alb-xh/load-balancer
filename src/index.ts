@@ -19,7 +19,16 @@ export class LoadBalancer extends Server {
 
     super((req, res) => {
       const serverUrl: URL = algo.next();
-      const nReq = request(urlToHttpOptions(serverUrl), (nRes) => nRes.pipe(res));
+
+      const nReq = request(
+        {
+          ...urlToHttpOptions(serverUrl),
+          method: req.method,
+          headers: req.headers,
+        },
+        (nRes) => nRes.pipe(res),
+      );
+
       req.pipe(nReq);
     });
   }
