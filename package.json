@@ -1,6 +1,6 @@
 {
-  "name": "loadbalancer",
-  "version": "0.0.1",
+  "name": "@alb-xh/load-balancer",
+  "version": "1.0.0",
   "description": "Load balancer server",
   "main": "dist/index.js",
   "type": "module",
@@ -10,9 +10,15 @@
     "dev": "tsx ./src/index.ts",
     "simulate": "tsx ./simulator/index.ts"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "keywords": [
-    "loadbalancer"
+    "load-balancer"
   ],
+  "repository": {
+    "url": "https://github.com/alb-xh/load-balancer.git"
+  },
   "author": "alb-xh",
   "license": "ISC",
   "devDependencies": {
